@@ -1,0 +1,1 @@
+groovy -cp build\classes\main src\main\groovy\Main.groovy %1

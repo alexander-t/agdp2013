@@ -1,0 +1,21 @@
+apply plugin: 'groovy'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	groovy localGroovy()
+    compile "org.hibernate:hibernate-annotations:3.4.0.GA"
+    testCompile "junit:junit:4.10"
+    runtime "org.slf4j:slf4j-simple:1.4.2"
+    runtime "hsqldb:hsqldb:1.8.0.7"
+    runtime "javassist:javassist:3.4.GA"
+}
+
+jar {
+    manifest {
+        attributes("Main-Class": "Main", "Class-Path": "lib/groovy-all-1.8.6")
+
+    }
+}
