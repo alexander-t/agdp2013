@@ -1,1 +1,0 @@
-groovy -cp build\classes\main src\main\groovy\se.tarnowski.agdp2013.Main.groovy %1
