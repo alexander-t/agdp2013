@@ -1,6 +1,9 @@
+package se.tarnowski.agdp2013
+
 import se.tarnowski.agdp2013.invoice.HibernateInvoiceRepository
 import se.tarnowski.agdp2013.invoice.Invoice
 import se.tarnowski.agdp2013.payment.InvoicePaymentParser
+import se.tarnowski.agdp2013.PaymentEngine
 
 if (args.length != 1) {
     System.err.println("Payment file expected! (argument missing)")

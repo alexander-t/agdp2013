@@ -1,7 +1,10 @@
-import se.tarnowski.agdp2013.payment.InvoicePayment
-import se.tarnowski.agdp2013.payment.PaymentStatus
+package se.tarnowski.agtd2013.payment
 
 import se.tarnowski.agdp2013.invoice.Invoice
+import se.tarnowski.agdp2013.payment.InvoicePayment
+import se.tarnowski.agdp2013.payment.PaymentStatus
+import se.tarnowski.agtd2013.invoice.ListInvoiceRepository
+import se.tarnowski.agdp2013.PaymentEngine
 
 public class InvoicePaymentTest extends GroovyTestCase {
 

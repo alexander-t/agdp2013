@@ -1,3 +1,5 @@
+package se.tarnowski.agdp2013
+
 import se.tarnowski.agdp2013.payment.*
 import se.tarnowski.agdp2013.invoice.InvoiceRepository
 

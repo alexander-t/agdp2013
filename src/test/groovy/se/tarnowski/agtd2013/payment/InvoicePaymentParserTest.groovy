@@ -1,3 +1,5 @@
+package se.tarnowski.agtd2013.payment
+
 import se.tarnowski.agdp2013.payment.InvoicePaymentParser
 
 class InvoicePaymentParserTest extends GroovyTestCase {
