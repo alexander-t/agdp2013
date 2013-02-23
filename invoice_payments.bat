@@ -1,1 +1,1 @@
-groovy -cp build\classes\main src\main\groovy\se.tarnowski.agdp2013.Main.groovy %1
+java -jar build/libs/agdp2013.jar %1
