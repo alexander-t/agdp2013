@@ -1,1 +1,0 @@
-java -jar build/libs/agdp2013.jar %1
