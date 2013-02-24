@@ -64,7 +64,7 @@ public class InvoicePaymentTest extends GroovyTestCase {
     }
 
     def createInvoice() {
-        Invoice invoice = new Invoice(123456789, 110)
+        Invoice invoice = new Invoice(123456789, 110, null)
         return invoice
     }
 }

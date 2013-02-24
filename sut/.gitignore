@@ -3,5 +3,4 @@
 build
 out
 invoice_payments.bat
-agdp2013.iml
-
+*.iml

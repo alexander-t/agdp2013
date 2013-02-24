@@ -14,7 +14,7 @@ class ListInvoiceRepository implements InvoiceRepository {
     void updateInvoice(Invoice invoice) {
     }
 
-    Invoice findByInvoiceNumber(long invoiceNumber) {
+    Invoice findByInvoiceNumber(BigInteger invoiceNumber) {
         invoices.find {it.invoiceNumber == invoiceNumber}
     }
 }

@@ -1,28 +1,31 @@
 package se.tarnowski.agdp2013.invoice
 
+import se.tarnowski.agdp2013.customer.Customer
 import se.tarnowski.agdp2013.payment.PaymentStatus
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import javax.persistence.*
 
-@Entity
+@Entity(name = "invoice")
 class Invoice {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     Long id
+    BigInteger invoiceNumber
     Date invoiceDate
     Date dueDate
     Date paymentDate
     BigDecimal amount
-    long invoiceNumber
+    @Enumerated(EnumType.STRING)
     PaymentStatus paymentStatus;
+    @ManyToOne()
+    @JoinColumn(name = "customer_id")
+    Customer customer;
 
     Invoice() {}
 
-    Invoice(long invoiceNumber, BigDecimal amount) {
+    Invoice(BigInteger invoiceNumber, BigDecimal amount, Customer customer) {
         this.invoiceNumber = invoiceNumber
         this.amount = amount
+        this.customer = customer
         this.invoiceDate = new Date()
         this.paymentStatus = PaymentStatus.UNPAID
     }

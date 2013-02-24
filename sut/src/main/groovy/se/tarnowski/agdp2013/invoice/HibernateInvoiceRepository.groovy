@@ -1,14 +1,15 @@
 package se.tarnowski.agdp2013.invoice
 
-import org.hibernate.cfg.AnnotationConfiguration
 import org.hibernate.SessionFactory
+import se.tarnowski.agdp2013.TransactionHelper
 
+@Mixin(TransactionHelper)
 class HibernateInvoiceRepository implements InvoiceRepository {
 
     private SessionFactory sessionFactory;
 
-    HibernateInvoiceRepository() {
-        sessionFactory = configureHibernate().buildSessionFactory()
+    HibernateInvoiceRepository(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory
     }
 
     @Override
@@ -26,45 +27,11 @@ class HibernateInvoiceRepository implements InvoiceRepository {
     }
 
     @Override
-    Invoice findByInvoiceNumber(long invoiceNumber) {
+    Invoice findByInvoiceNumber(BigInteger invoiceNumber) {
         withTransaction { session ->
-            def query = session.createQuery("from Invoice i where i.invoiceNumber=:invoiceNumber")
+            def query = session.createQuery("from invoice i where i.invoiceNumber=:invoiceNumber")
             query.setParameter("invoiceNumber", invoiceNumber)
             return query.uniqueResult()
-        }
-    }
-
-    private configureHibernate() {
-        def hibernateProps = [
-                "hibernate.dialect": "org.hibernate.dialect.HSQLDialect",
-                "hibernate.connection.driver_class": "org.hsqldb.jdbcDriver",
-                "hibernate.connection.url": "jdbc:hsqldb:mem:db",
-                "hibernate.connection.username": "sa",
-                "hibernate.connection.password": "",
-                "hibernate.connection.pool_size": "1",
-                "hibernate.connection.autocommit": "true",
-                "hibernate.cache.provider_class": "org.hibernate.cache.NoCacheProvider",
-                "hibernate.hbm2ddl.auto": "create-drop",
-                "hibernate.show_sql": "false",
-                "hibernate.transaction.factory_class": "org.hibernate.transaction.JDBCTransactionFactory",
-                "hibernate.current_session_context_class": "thread"
-        ]
-
-        def config = new AnnotationConfiguration()
-        hibernateProps.each { k, v -> config.setProperty(k, v) }
-        config.addAnnotatedClass(Invoice)
-        return config
-    }
-
-    def withTransaction(Closure closure) {
-        def session = sessionFactory.currentSession
-        def tx = session.beginTransaction()
-        try {
-            return closure.call(session)
-        } catch (Throwable t) {
-            tx.rollback()
-        } finally {
-            tx.commit();
         }
     }
 }
