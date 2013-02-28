@@ -1,0 +1,13 @@
+apply plugin: 'groovy'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    groovy localGroovy()
+    compile "org.seleniumhq.selenium:selenium-java:2.30.0"
+    testCompile "junit:junit:4.10"
+    testRuntime "mysql:mysql-connector-java:5.1.20"
+}
+
