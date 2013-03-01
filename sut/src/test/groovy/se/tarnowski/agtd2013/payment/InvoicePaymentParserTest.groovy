@@ -6,7 +6,7 @@ class InvoicePaymentParserTest extends GroovyTestCase {
 
     void testParsingOfCorrectLine() {
         def parser = new InvoicePaymentParser()
-        def line = "10020130301       110004443322-1                1234567SVEN SVENSSON                  STOCKHOLMSVÄGEN 100           11111STOCKHOLM                "
+        def line = "10020130301       110004443322-1                1234567[         PAYER NAME         ][       STREET ADDRESS       ]11111[            CITY            ]"
 
         def payment = parser.parseLine(line)
 
@@ -14,7 +14,9 @@ class InvoicePaymentParserTest extends GroovyTestCase {
         assertEquals(110.00, payment.amount)
         assertEquals("4443322-1", payment.destinationAccount)
         assertEquals(1234567, payment.invoiceNumber)
+        assertEquals("[         PAYER NAME         ]", payment.payerName)
+        assertEquals("[       STREET ADDRESS       ]", payment.street)
+        assertEquals("11111", payment.postalCode)
+        assertEquals("[            CITY            ]", payment.city)
     }
 }
-
-
