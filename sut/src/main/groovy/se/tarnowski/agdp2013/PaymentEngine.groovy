@@ -1,10 +1,12 @@
 package se.tarnowski.agdp2013
 
-import se.tarnowski.agdp2013.payment.*
+import groovy.util.logging.Slf4j
 import se.tarnowski.agdp2013.invoice.InvoiceRepository
-import groovy.util.logging.Log4j
+import se.tarnowski.agdp2013.payment.InvoicePayment
+import se.tarnowski.agdp2013.payment.Payment
+import se.tarnowski.agdp2013.payment.PaymentStatus
 
-@Log4j
+@Slf4j
 class PaymentEngine {
 
     private static BigDecimal INVOICING_FEE = 10;
