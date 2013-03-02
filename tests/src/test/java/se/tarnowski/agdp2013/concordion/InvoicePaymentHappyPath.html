@@ -1,0 +1,27 @@
+<html xmlns:concordion="http://www.concordion.org/2007/concordion">
+<head>
+    <link href="../concordion.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1>An invoice is paid with the correct amount</h1>
+
+<p>An unpaid invoice is marked as paid if an invoice payment is received with the exact same amount
+    as on the invoice. The invoice's payment date is set to the day the payment was received. </p>
+
+<div class="example">
+
+    <h3>Example</h3>
+
+    <p>Given that customer <span concordion:set="#customerName">Sven</span> has an unpaid invoice.</p>
+
+    <p>
+        When a payment with invoice number <span concordion:set="#invoiceNumber">12345678</span> is processed.
+        <span concordion:execute="#result = processPayment(#customerName, #invoiceNumber)"></span>
+    </p>
+
+    <p>Then the status of the invoice should be <span concordion:assertEquals="#result.paymentStatus">PAID</span></p>
+
+    <p>And its payment date should be set to <span concordion:assertTrue="#result.isPaymentDateToday">today</span>.</p>
+</div>
+</body>
+</html>

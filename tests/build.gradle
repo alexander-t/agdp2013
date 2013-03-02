@@ -6,8 +6,8 @@ repositories {
 
 dependencies {
     groovy localGroovy()
-    compile "org.seleniumhq.selenium:selenium-java:2.30.0"
-    testCompile "junit:junit:4.10"
+    compile "org.seleniumhq.selenium:selenium-java:2.30.0", "org.concordion:concordion:1.4.3"
+    testCompile "junit:junit:4.11"
     testRuntime "mysql:mysql-connector-java:5.1.20"
 }
 

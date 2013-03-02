@@ -18,7 +18,7 @@ class HibernateConfiguration {
                 "hibernate.connection.autocommit": "true",
                 "hibernate.cache.provider_class": "org.hibernate.cache.NoCacheProvider",
                 "hibernate.hbm2ddl.auto": "validate",
-                "hibernate.show_sql": "true",
+                "hibernate.show_sql": "false",
                 "hibernate.transaction.factory_class": "org.hibernate.transaction.JDBCTransactionFactory",
                 "hibernate.current_session_context_class": "thread"
         ]

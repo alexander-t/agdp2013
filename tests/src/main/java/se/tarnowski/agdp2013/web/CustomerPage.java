@@ -35,7 +35,11 @@ public class CustomerPage {
         invoicesLink.click();
     }
 
-    public String getPaymentStatusOOfFirstInvoice() {
+    public String getPaymentDateOfFirstInvoice() {
+        return invoiceTable.findElement(By.xpath(".//tr[1]/td[5]")).getText();
+    }
+
+    public String getPaymentStatusOfFirstInvoice() {
         return invoiceTable.findElement(By.xpath(".//tr[1]/td[6]")).getText();
     }
 }
