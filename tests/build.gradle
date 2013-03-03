@@ -1,4 +1,5 @@
 apply plugin: 'groovy'
+apply plugin: 'java'
 
 repositories {
     mavenCentral()
@@ -7,7 +8,9 @@ repositories {
 dependencies {
     groovy localGroovy()
     compile "org.seleniumhq.selenium:selenium-java:2.30.0", "org.concordion:concordion:1.4.3"
+    testCompile "info.cukes:cucumber-java:1.1.2", "info.cukes:cucumber-junit:1.1.2"
     testCompile "junit:junit:4.11"
     testRuntime "mysql:mysql-connector-java:5.1.20"
 }
+
 

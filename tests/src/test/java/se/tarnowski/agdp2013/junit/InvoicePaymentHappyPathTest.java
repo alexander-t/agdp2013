@@ -4,8 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
 import static se.tarnowski.agdp2013.TestFramework.*;

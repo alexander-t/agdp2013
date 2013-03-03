@@ -1,14 +1,11 @@
 package se.tarnowski.agdp2013.concordion;
 
 import org.concordion.integration.junit4.ConcordionRunner;
-import org.junit.Before;
 import org.junit.runner.RunWith;
 import se.tarnowski.agdp2013.TestFramework;
 
 import java.io.File;
-import java.util.Date;
 
-import static org.junit.Assert.assertEquals;
 import static se.tarnowski.agdp2013.TestFramework.*;
 
 @RunWith(ConcordionRunner.class)
