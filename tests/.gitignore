@@ -3,5 +3,8 @@
 build
 out
 chromedriver.*
+fitnesse*.jar
 *.iml
+FitNesseRoot
+
 

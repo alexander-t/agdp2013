@@ -11,6 +11,6 @@ class DatabaseResetter {
     }
 
     def reset() {
-        sql.execute("update invoice set payment_status='UNPAID'")
+        sql.execute("update invoice set payment_status='UNPAID', payment_date=NULL")
     }
 }

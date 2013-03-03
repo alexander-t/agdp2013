@@ -13,4 +13,17 @@ dependencies {
     testRuntime "mysql:mysql-connector-java:5.1.20"
 }
 
+task fitnesseJar(type: Jar) {
+    archiveName = "fitnesse-dependencies.jar"
+    from {
+        configurations.testRuntime.collect { File f ->
+            return zipTree(f)
+        }
+    }
+}
+
+task fitnesse(dependsOn: "fitnesseJar") << {
+    ant.java(jar:"fitnesse-standalone.jar", args:"-p 8888", fork:true)
+}
+
 
