@@ -1,5 +1,6 @@
 package se.tarnowski.agtd2013.payment
 
+import se.tarnowski.agdp2013.customer.Customer
 import se.tarnowski.agdp2013.invoice.Invoice
 import se.tarnowski.agdp2013.payment.InvoicePayment
 import se.tarnowski.agdp2013.payment.PaymentStatus
@@ -54,6 +55,18 @@ public class InvoicePaymentTest extends GroovyTestCase {
         assertNull invoice.paymentDate
     }
 
+    void testOverpaidInvoicesAreMarkedAsCompleteAndTheExcessAmountIsAddedToCustomersAccount() {
+        def invoice = createInvoice();
+        invoiceRepository.addInvoice(invoice)
+
+        PaymentEngine paymentEngine = new PaymentEngine(invoiceRepository)
+        paymentEngine.processPayment(createInvoicePayment(PRICE_WITH_FEE + 50))
+
+        assert invoice.paymentStatus == PaymentStatus.PAID
+        assert invoice.paymentDate.clearTime().equals(new Date().clearTime())
+        assert invoice.customer.balance == 50
+    }
+
 
     def createInvoicePayment(BigDecimal amount) {
         InvoicePayment invoicePayment = new InvoicePayment()
@@ -64,7 +77,7 @@ public class InvoicePaymentTest extends GroovyTestCase {
     }
 
     def createInvoice() {
-        Invoice invoice = new Invoice(123456789, 110, null)
+        Invoice invoice = new Invoice(123456789, 110, new Customer())
         return invoice
     }
 }

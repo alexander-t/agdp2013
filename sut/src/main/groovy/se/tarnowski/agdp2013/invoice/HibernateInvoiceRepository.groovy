@@ -23,6 +23,7 @@ class HibernateInvoiceRepository implements InvoiceRepository {
     void updateInvoice(Invoice invoice) {
         withTransaction { session ->
             session.update(invoice)
+            session.update(invoice.customer)
         }
     }
 

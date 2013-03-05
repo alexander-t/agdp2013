@@ -6,6 +6,10 @@ import se.tarnowski.agdp2013.payment.InvoicePayment
 import se.tarnowski.agdp2013.payment.Payment
 import se.tarnowski.agdp2013.payment.PaymentStatus
 
+/**
+ * This class simulates a legacy payment engine with nested logic and ugly constructs like instanceof.
+ * Hopefully it contains some bugs.
+ */
 @Slf4j
 class PaymentEngine {
 
@@ -30,6 +34,10 @@ class PaymentEngine {
             } else {
                 invoice.paymentStatus = PaymentStatus.PAID
                 invoice.paymentDate = new Date()
+                def excess = payment.amount - invoice.amount
+                if (excess > 0) {
+                    invoice.customer.balance += excess
+                }
             }
         }
         invoiceRepository.updateInvoice(invoice)
