@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title><g:layoutTitle default="Simplistic CMS&trade;"/></title>
+    <title><g:layoutTitle default="Simplistic CRM&trade;"/></title>
     <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'bootstrap.min.css')}">
 </head>
 
@@ -9,7 +9,7 @@
 <div class="container">
     <div class="navbar">
         <div class="navbar-inner">
-            <a class="brand" href="/frontend/">Simplistic CMS&trade;</a>
+            <a class="brand" href="/frontend/">Simplistic CRM&trade;</a>
         </div>
     </div>
 
@@ -19,8 +19,8 @@
             <g:form controller="customer" class="form-inline">
                 <fieldset>
                 <legend>Search</legend>
-                <g:field name="q" type="text" class="input-small" placeholder="Name"/>
-                <g:submitButton name="search" class="btn"/>
+                <g:textField name="q" type="text" class="input-small" placeholder="Name"/>
+                <g:submitButton name="search" class="btn" value="search"/>
                 <fieldset>
             </g:form>
         </div>
