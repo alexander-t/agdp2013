@@ -19,7 +19,7 @@ public class InvoicePaymentHappyPathStepDefinitions {
 
     @Before
     public void beforeScenario() {
-        resetDatabase();
+        emptyDatabase();
     }
 
     @Given("that customer (\\w+) has an unpaid invoice with number (\\w+).")

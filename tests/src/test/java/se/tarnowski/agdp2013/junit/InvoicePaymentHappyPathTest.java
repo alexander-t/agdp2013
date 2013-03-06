@@ -12,7 +12,8 @@ public class InvoicePaymentHappyPathTest {
 
     @Before
     public void setUp() {
-        resetDatabase();
+        emptyDatabase();
+        addCustomerToDatabase("Sven", "12345678");
     }
 
     @Test

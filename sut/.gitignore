@@ -4,3 +4,4 @@ build
 out
 invoice_payments.bat
 *.iml
+invoice_payment.txt

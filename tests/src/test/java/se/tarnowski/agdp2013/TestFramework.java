@@ -1,6 +1,6 @@
 package se.tarnowski.agdp2013;
 
-import se.tarnowski.agdp2013.backend.DatabaseResetter;
+import se.tarnowski.agdp2013.backend.DatabaseRoutines;
 import se.tarnowski.agdp2013.backend.InvoicePaymentFileWriter;
 import se.tarnowski.agdp2013.backend.SimpleOsCommandExecutor;
 import se.tarnowski.agdp2013.web.CustomerPage;
@@ -13,17 +13,25 @@ import java.util.Arrays;
 import java.util.Date;
 
 public class TestFramework {
-    public static final String baseDir = "d:\\src\\agdp2013";
+    public static final String baseDir = "c:\\src\\agdp2013";
     public static final String chromeDriverDir = baseDir + "\\tests\\chromedriver.exe";
     public static String sutDir = baseDir + "\\sut";
 
-    public static final String jdbcUrl = "jdbc:mysql://192.168.0.70:3306/agdp2013";
+    public static final String jdbcUrl = "jdbc:mysql://localhost:3306/agdp2013";
+    public static final String dbUser = "agdp";
+    public static final String dbPassword = "2013";
     public static final String frontendUrl = "http://localhost:8080/frontend";
 
-    public static final SimpleDateFormat CMS_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+    public static final SimpleDateFormat CRM_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
-    public static void resetDatabase() {
-        new DatabaseResetter(jdbcUrl, "agdp", "2013").reset();
+    private static DatabaseRoutines dbRoutines = new DatabaseRoutines(jdbcUrl, dbUser, dbPassword);
+
+    public static void emptyDatabase() {
+        dbRoutines.reset();
+    }
+
+    public static void addCustomerToDatabase(String customerFirstName, String invoiceNumber) {
+        dbRoutines.createCustomer(customerFirstName, invoiceNumber);
     }
 
     public static File createInvoicePaymentFile(String customerName, String invoiceNumber) {
@@ -58,7 +66,7 @@ public class TestFramework {
     }
 
     public static String todayAsString() {
-        return CMS_DATE_FORMAT.format(new Date());
+        return CRM_DATE_FORMAT.format(new Date());
     }
 
     public static class InvoiceStatus {

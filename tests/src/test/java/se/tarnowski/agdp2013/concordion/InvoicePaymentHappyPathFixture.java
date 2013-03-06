@@ -12,7 +12,8 @@ import static se.tarnowski.agdp2013.TestFramework.*;
 public class InvoicePaymentHappyPathFixture {
 
     public Result processPayment(String customerFirstName, String invoiceNumber) {
-        resetDatabase();
+        emptyDatabase();
+        addCustomerToDatabase("Sven", "12345678");
 
         File paymentFile = createInvoicePaymentFile(customerFirstName + " Svensson", invoiceNumber);
         importPaymentFile(paymentFile);
